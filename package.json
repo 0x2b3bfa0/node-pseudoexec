@@ -1,0 +1,20 @@
+{
+  "name": "pseudoexec",
+  "version": "0.0.0+development",
+  "description": "",
+  "main": "index.js",
+  "homepage": "https://github.com/0x2b3bfa0/node-pseudoexec#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0x2b3bfa0/node-pseudoexec.git"
+  },
+  "bugs": {
+    "url": "https://github.com/0x2b3bfa0/node-pseudoexec/issues"
+  },
+  "keywords": [
+    "exec",
+    "process"
+  ],
+  "author": "0x2b3bfa0@googlemail.com",
+  "license": "MIT"
+}
