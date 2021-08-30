@@ -1,14 +1,30 @@
 on:
   release:
     types: [published]
+  pull_request:
+  push:
 jobs:
+  test:
+    runs-on: ${{ matrix.platform }}
+    strategy:
+      matrix:
+        platform:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npm install && npx jest
   publish:
+    needs: test
     runs-on: ubuntu-latest
+    if: github.event_name == 'release'
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: https://registry.npmjs.org
       - run: |
           npm install
           npm version ${{ github.ref }}
