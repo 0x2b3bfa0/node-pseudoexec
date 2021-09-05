@@ -8,14 +8,9 @@ Node JS doesn't provide any means for processes to replace themselves through fu
 ## Example
 
 ```javascript
-const { pseudoexec } = require('pseudoexec')
+const { pseudoexec } = require("pseudoexec");
 
-async function main() {
-  const exitCode = await pseudoexec('/bin/ls', ['--color=auto']);
-  process.exit(exitCode);
-}
-
-main();
+pseudoexec("sl", ["-f", "-a"]).then(process.exit);
 ```
 
 ## Maintenance
