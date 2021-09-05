@@ -2,7 +2,6 @@ on:
   release:
     types: [published]
   pull_request:
-  push:
 jobs:
   test:
     runs-on: ${{ matrix.platform }}
@@ -26,7 +25,8 @@ jobs:
           registry-url: https://registry.npmjs.org
       - run: |
           npm install
-          npm version ${{ github.ref }}
+          npm version "$(basename "$TAG")"
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          TAG: ${{ github.ref }}
