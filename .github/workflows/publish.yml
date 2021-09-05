@@ -10,7 +10,6 @@ jobs:
       matrix:
         platform:
           - ubuntu-latest
-          - windows-latest
           - macos-latest
     steps:
       - uses: actions/checkout@v2
