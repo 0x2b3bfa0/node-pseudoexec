@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: npm install && npx jest
+      - run: npm ci && npx jest
   publish:
     needs: test
     runs-on: ubuntu-latest
@@ -24,8 +24,8 @@ jobs:
         with:
           registry-url: https://registry.npmjs.org
       - run: |
-          npm install
-          npm version "$(basename "$TAG")"
+          npm ci
+          npm version --git-tag-version=false "$(basename "$TAG")"
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
